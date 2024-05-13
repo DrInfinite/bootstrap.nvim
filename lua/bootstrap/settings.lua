@@ -21,7 +21,7 @@ vim.opt.showmode = false
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.opt.clipboard = "unnamedplus"
+-- vim.opt.clipboard = "unnamedplus"
 
 -- Enable break indent
 vim.opt.breakindent = true
@@ -62,8 +62,29 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
 
--- Set highlight on search
+-- Set indentation width
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+
+-- Disable line wrap
+vim.opt.wrap = false
+
+-- Disable swapfile
+vim.opt.swapfile = false
+
+-- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.opt.hlsearch = true
+vim.opt.incsearch = true
+
+-- Enable 24-bit RGB color in the TUI
+vim.opt.termguicolors = true
+
+vim.opt.isfname:append("@-@")
+
+-- Set the color column to 80 characters
+vim.opt.colorcolumn = "80"
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
