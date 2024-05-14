@@ -126,7 +126,8 @@ vim.opt.rtp:prepend(lazypath)
 
 local imports = {
     { import = "bootstrap.builtin" },
-    { import = "bootstrap.custom" },
+    -- Uncomment this line while adding your custom plugins
+    -- { import = "bootstrap.custom" },
 }
 
 local opts = {
