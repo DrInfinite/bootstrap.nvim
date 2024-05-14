@@ -12,12 +12,12 @@ What is Bootstrap.nvim?
     way is to get started with a distribution. While this is amazing for someone
     who wants an experience similar to that of VSCode or any other text editor.
 
-    The polar opposite of this is to build your own config from scratch. This 
+    The polar opposite of this is to build your own config from scratch. This
     gives you full control over what goes into NeoVim, based on your preferences,
     but is extremely difficult for a beginner to work with.
 
     That's where the middle ground comes in. A NeoVim stating point!
-    
+
     Bootstrap.nvim is just that, a starting point for your configuration.
         The gameplan is to get you to read the entire configuration here at your
         own pace, read every line of code, understand the various APIs and their
@@ -60,19 +60,19 @@ Getting Started:
     TODO: Getting Familiar with NeoVim is essential going forward, so starting
     with the builtin tutor is of utmost importance to those who do not know the
     basics of NeoVim.
-    
+
     (If you are familiar with the basics, you can skip the next step)
         - Run the `:Tutor` command in NeoVim.
         - Walk through the whole thing before proceeding any further
 
-    TODO: Your best friend when you are stuck is the NeoVim Documentation. The 
+    TODO: Your best friend when you are stuck is the NeoVim Documentation. The
     easiest way to access this documentation is to run the `:help` command in NeoVim.
 
-        This opens up the home page of the NeoVim User Documentation site within 
-        the editor. It shows some basic information about reading, navigating 
+        This opens up the home page of the NeoVim User Documentation site within
+        the editor. It shows some basic information about reading, navigating
         and searching the builtin help documentation.
 
-        This should be the first place you go to look when you're stuck or 
+        This should be the first place you go to look when you're stuck or
         confused with something. It is truly the greatest tool within NeoVim.
 
         NOTE: A keymap "<leader>sh" is provided as part of the config. This is
@@ -97,4 +97,54 @@ beautiful world of NeoVim.
 ]]
 --
 
-require("bootstrap")
+-- [[ Install `lazy.nvim` plugin manager ]]
+--    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
+
+-- Set the stdpath of lazy to be the same as the stdpath of neovim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+-- Install the latest stable release of lazy and setup lazy.nvim to use it
+if not vim.loop.fs_stat(lazypath) then
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    vim.fn.system({
+        "git",
+        "clone",
+        "--filter=blob:none",
+        "--branch=stable", -- latest stable release
+        lazyrepo,
+        lazypath,
+    })
+end
+
+---@diagnostic disable-next-line: undefined-field
+vim.opt.rtp:prepend(lazypath)
+
+local imports = {
+    { import = "bootstrap.builtin" },
+    { import = "bootstrap.custom" },
+}
+
+local opts = {
+    ui = {
+        border = "single",
+        -- If you are using a Nerd Font: set icons to an empty table which will use the
+        -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+        icons = vim.g.have_nerd_font and {} or {
+            cmd = "⌘",
+            config = "🛠",
+            event = "📅",
+            ft = "📂",
+            init = "⚙",
+            keys = "🗝",
+            plugin = "🔌",
+            runtime = "💻",
+            require = "🌙",
+            source = "📄",
+            start = "🚀",
+            task = "📌",
+            lazy = "💤 ",
+        },
+    },
+}
+
+require("lazy").setup(imports, opts)
