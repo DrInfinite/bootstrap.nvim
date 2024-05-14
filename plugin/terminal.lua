@@ -9,10 +9,10 @@ vim.opt.shell = "pwsh.exe"
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Open a terminal at the botton of the screen with a fixed height
-vim.keymap.set("n", "<leader>to", function()
+vim.keymap.set("n", ",st", function()
 	vim.cmd.new()
 	vim.cmd.wincmd("J")
 	vim.api.nvim_win_set_height(0, 12)
 	vim.wo.winfixheight = true
 	vim.cmd.terminal()
-end, { desc = "[T]erminal [O]pen" })
+end, { desc = "[T]oggle [T]erminal" })
