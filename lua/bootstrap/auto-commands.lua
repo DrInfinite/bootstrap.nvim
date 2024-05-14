@@ -11,3 +11,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	desc = "Remove line numbers and scroll offsets in terminals",
+	group = vim.api.nvim_create_augroup("bootstrap-custom-terminal", {}),
+	callback = function()
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+		vim.opt_local.scrolloff = 0
+	end,
+})
