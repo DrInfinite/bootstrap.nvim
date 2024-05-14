@@ -1,4 +1,5 @@
-vim.opt.shell = "pwsh.exe"
+-- Set shell to pwsh.exe (change it to the shell of your choice)
+-- vim.opt.shell = "pwsh.exe"
 
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
