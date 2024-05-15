@@ -1,3 +1,3 @@
 local sleuth = { "tpope/vim-sleuth" }
 
-return { sleuth }
+return sleuth
