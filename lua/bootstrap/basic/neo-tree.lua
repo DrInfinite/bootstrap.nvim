@@ -37,7 +37,7 @@ local neo_tree = {
 			},
 		})
 
-		vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal float<CR>", { desc = "[E]xplorer Open" })
+		vim.keymap.set("n", "<leader>e", ":Neotree filesystem reveal right<CR>", { desc = "[E]xplorer Open" })
 		vim.keymap.set("n", "<leader>bf", ":Neotree buffers reveal float<CR>", { desc = "Active [B]uffers" })
 	end,
 }
