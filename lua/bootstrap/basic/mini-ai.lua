@@ -9,49 +9,49 @@ Extend and create a/i textobjects
     - Has builtins for brackets, quotes, function call, argument, tag, user 
         prompt, and any punctuation/digit/whitespace character.
 
-]] --
+]]
 -- Examples:
 --  - va)  - [V]isually select [A]round [)]paren
 --  - yinq - [Y]ank [I]nside [N]ext [']quote
 --  - ci'  - [C]hange [I]nside [']quote
 local mini_ai = {
-    'echasnovski/mini.ai',
-    version = '*',
-    config = function()
-        require('mini.ai').setup({
-            -- Table with textobject id as fields, textobject specification as values.
-            -- Also use this to disable builtin textobjects. See |MiniAi.config|.
-            custom_textobjects = nil,
+	"echasnovski/mini.ai",
+	version = "*",
+	config = function()
+		require("mini.ai").setup({
+			-- Table with textobject id as fields, textobject specification as values.
+			-- Also use this to disable builtin textobjects. See |MiniAi.config|.
+			custom_textobjects = nil,
 
-            -- Module mappings. Use `''` (empty string) to disable one.
-            mappings = {
-                -- Main textobject prefixes
-                around = 'a',
-                inside = 'i',
+			-- Module mappings. Use `''` (empty string) to disable one.
+			mappings = {
+				-- Main textobject prefixes
+				around = "a",
+				inside = "i",
 
-                -- Next/last variants
-                around_next = 'an',
-                inside_next = 'in',
-                around_last = 'al',
-                inside_last = 'il',
+				-- Next/last variants
+				around_next = "an",
+				inside_next = "in",
+				around_last = "al",
+				inside_last = "il",
 
-                -- Move cursor to corresponding edge of `a` textobject
-                goto_left = 'g[',
-                goto_right = 'g]'
-            },
+				-- Move cursor to corresponding edge of `a` textobject
+				goto_left = "g[",
+				goto_right = "g]",
+			},
 
-            -- Number of lines within which textobject is searched
-            n_lines = 50,
+			-- Number of lines within which textobject is searched
+			n_lines = 50,
 
-            -- How to search for object (first inside current line, then inside
-            -- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
-            -- 'cover_or_nearest', 'next', 'previous', 'nearest'.
-            search_method = 'cover_or_next',
+			-- How to search for object (first inside current line, then inside
+			-- neighborhood). One of 'cover', 'cover_or_next', 'cover_or_prev',
+			-- 'cover_or_nearest', 'next', 'previous', 'nearest'.
+			search_method = "cover_or_next",
 
-            -- Whether to disable showing non-error feedback
-            silent = false
-        })
-    end
+			-- Whether to disable showing non-error feedback
+			silent = false,
+		})
+	end,
 }
 
 return mini_ai

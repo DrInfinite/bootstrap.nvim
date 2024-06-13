@@ -94,7 +94,8 @@ If you experience any errors while trying to install Bootstrap.nvim, run `:check
 This is all you need to get started traveller, enjoy your journey into the
 beautiful world of NeoVim.
 - Naparajith
-]] -- Set <space> as the leader key
+]]
+-- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = " "
@@ -108,48 +109,55 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 -- Install the latest stable release of lazy and setup lazy.nvim to use it
 if not vim.loop.fs_stat(lazypath) then
-    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-    vim.fn.system({"git", "clone", "--filter=blob:none", "--branch=stable", -- latest stable release
-    lazyrepo, lazypath})
+	local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"--branch=stable", -- latest stable release
+		lazyrepo,
+		lazypath,
+	})
 end
 
 ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-local imports = {{
-    import = "bootstrap.basic"
-} -- end of defaults
--- Uncomment the following lines to add advanced plugins
--- {
---     import = "bootstrap.advanced"
--- } 
--- Uncomment the following lines while adding your custom plugins
--- {
---     import = "bootstrap.custom"
--- }
+local imports = {
+	{
+		import = "bootstrap.basic",
+	}, -- end of defaults
+	-- Uncomment the following lines to add advanced plugins
+	-- {
+	--     import = "bootstrap.advanced"
+	-- }
+	-- Uncomment the following lines while adding your custom plugins
+	-- {
+	--     import = "bootstrap.custom"
+	-- }
 }
 
 local opts = {
-    ui = {
-        border = "single",
-        -- If you are using a Nerd Font: set icons to an empty table which will use the
-        -- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
-        icons = vim.g.have_nerd_font and {} or {
-            cmd = "⌘",
-            config = "🛠",
-            event = "📅",
-            ft = "📂",
-            init = "⚙",
-            keys = "🗝",
-            plugin = "🔌",
-            runtime = "💻",
-            require = "🌙",
-            source = "📄",
-            start = "🚀",
-            task = "📌",
-            lazy = "💤 "
-        }
-    }
+	ui = {
+		border = "single",
+		-- If you are using a Nerd Font: set icons to an empty table which will use the
+		-- default lazy.nvim defined Nerd Font icons, otherwise define a unicode icons table
+		icons = vim.g.have_nerd_font and {} or {
+			cmd = "⌘",
+			config = "🛠",
+			event = "📅",
+			ft = "📂",
+			init = "⚙",
+			keys = "🗝",
+			plugin = "🔌",
+			runtime = "💻",
+			require = "🌙",
+			source = "📄",
+			start = "🚀",
+			task = "📌",
+			lazy = "💤 ",
+		},
+	},
 }
 
 require("lazy").setup(imports, opts)
