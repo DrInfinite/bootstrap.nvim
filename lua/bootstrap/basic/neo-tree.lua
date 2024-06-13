@@ -106,6 +106,7 @@ local neo_tree = {
 			commands = {},
 			window = {
 				position = "left",
+				toggle = true,
 				width = 40,
 				mapping_options = {
 					noremap = true,
