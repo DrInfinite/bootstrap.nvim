@@ -1,3 +1,4 @@
+-- Move any selection in any direction
 local mini_move = {
     'echasnovski/mini.move',
     version = '*',
