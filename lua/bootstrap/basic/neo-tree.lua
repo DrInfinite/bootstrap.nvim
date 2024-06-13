@@ -106,7 +106,6 @@ local neo_tree = {
 			commands = {},
 			window = {
 				position = "left",
-				toggle = true,
 				width = 40,
 				mapping_options = {
 					noremap = true,
@@ -287,7 +286,7 @@ local neo_tree = {
 			},
 		})
 
-		vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+		vim.cmd([[nnoremap \ :Neotree toggle<cr>]])
 	end,
 }
 
