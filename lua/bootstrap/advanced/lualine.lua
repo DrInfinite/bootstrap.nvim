@@ -13,7 +13,9 @@ local lualine = {
 		require("lualine").setup({
 			options = {
 				component_separators = "|",
-				disabled_filetypes = { statusline = { "alpha" } },
+				disabled_filetypes = {
+					statusline = { "alpha" },
+				},
 				globalstatus = true,
 				section_separators = "",
 				theme = "auto",
@@ -21,13 +23,8 @@ local lualine = {
 			sections = {
 				lualine_a = { "mode" },
 				lualine_b = { "branch", "diff", "diagnostics" },
-				lualine_c = {
-					"filename",
-					"filesize",
-				},
+				lualine_c = { "filename", "filesize" },
 				lualine_x = {
-					"codeium#GetStatusString",
-					"encoding",
 					{
 						"filetype",
 						icon = {
@@ -39,24 +36,22 @@ local lualine = {
 					{
 						"progress",
 						separator = " ",
-						padding = { left = 1, right = 0 },
+						padding = {
+							left = 1,
+							right = 0,
+						},
 					},
 					{
 						"location",
-						padding = { left = 0, right = 1 },
+						padding = {
+							left = 0,
+							right = 1,
+						},
 					},
 				},
-				lualine_z = {
-					function()
-						return " " .. os.date("%R")
-					end,
-				},
+				lualine_z = { "codeium#GetStatusString", "encoding" },
 			},
-			extensions = {
-				"neo-tree",
-				"mason",
-				"lazy",
-			},
+			extensions = { "neo-tree", "mason", "lazy", "trouble" },
 		})
 	end,
 }
