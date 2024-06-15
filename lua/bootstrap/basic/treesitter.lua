@@ -3,6 +3,9 @@ local ts_autotag = {
 	"windwp/nvim-ts-autotag",
 	event = "VeryLazy",
 	opts = {},
+	config = function()
+		require("nvim-ts-autotag").setup()
+	end,
 }
 
 -- Highlight, edit, and navigate code
